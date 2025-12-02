@@ -1,27 +1,32 @@
+# %%
 import numpy as np
-import pandas as pd
 
 # %%
-import pandas as pd
-
+a = np.array([1,2,3,4,5]) # create 1D array
 # %%
-df = pd.DataFrame({"x":[1,2,3],"y":[4,5,6]})
-df.head()
-
+b = np.array ([[1,2,3], [1,3,6]])
+b
 # %%
-print("done")
-
-
-
+ze = np.zeros((2,3))
+ze
 # %%
-names  = ['ali', "moien"]
+ones = np.ones((2,3))
+ones
+# %%
+rand = np.random.rand (2,3)
+rand
+# %%
+aa = np.arange (0,10,1)
+aa
+# %%
+ln = np.linspace(0,1,10)
+ln
+# %%
+x = np.array([[1.2, 3.4, 5.6],
+              [7.8, 9.0, 1.1]])
 
-# %%
-ls = [1,2,3,4,5,6]
-squ = [x **2 for x in ls]
-squ
-# %%
-income = [100,200,300,400]
-fi = [x *.90 for x in income]
-fi
+print(x.shape)   # shape of array
+print(x.ndim)    # number of dimensions
+print(x.dtype)   # data type
+
 # %%
