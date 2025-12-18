@@ -30,3 +30,11 @@ print(x.ndim)    # number of dimensions
 print(x.dtype)   # data type
 
 # %%
+a = np.array ([1,2,3,4,5,6,7,8,9])
+print(a[0])
+# %%
+print(a[1:3])
+print(a[:2])
+print(a[1:])
+print(a[::3])
+# %%
