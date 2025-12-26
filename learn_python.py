@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 # %%
+import pandas as pd
 a = np.array([1,2,3,4,5]) # create 1D array
 # %%
 b = np.array ([[1,2,3], [1,3,6]])
@@ -135,3 +136,5 @@ y = np.array([1, 2, 2.5])
 beta = np.linalg.inv(X.T @ X) @ X.T @ y
 print(beta)
 # %%
+##### start pandas 
+
