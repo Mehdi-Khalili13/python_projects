@@ -137,4 +137,35 @@ beta = np.linalg.inv(X.T @ X) @ X.T @ y
 print(beta)
 # %%
 ##### start pandas 
+import pandas as pd
+p = pd.Series([1,2,3,4,5,6])
+p
 
+# %%
+p1 = pd.Series([1,2,3,4], index= ['m','n','mm', 'qw'])
+p1
+# %%
+p1['m']
+p1[0]
+# %%
+p1/10
+# %%
+df = pd.DataFrame({
+    "pro":['mn', "mm", "mb"], 
+    "in": [1,2,3],
+    "index": ["h","h1","h2"]
+})
+df
+# %%
+df.describe()
+# %%
+df.info()
+# %%
+df[["pro","in"]]
+# %%
+df.iloc[0:2]
+# %%
+df[df["in"] == 1]
+# %%
+df[df["pro"] =="mm"]
+# %%
