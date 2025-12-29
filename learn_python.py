@@ -136,7 +136,10 @@ y = np.array([1, 2, 2.5])
 beta = np.linalg.inv(X.T @ X) @ X.T @ y
 print(beta)
 # %%
-##### start pandas 
+
+
+####################### start pandas ###################
+#########################################################
 import pandas as pd
 p = pd.Series([1,2,3,4,5,6])
 p
@@ -168,4 +171,73 @@ df.iloc[0:2]
 df[df["in"] == 1]
 # %%
 df[df["pro"] =="mm"]
+# %%
+ df = pd.DataFrame({
+  "ostan":["teh", "mar" , "ir" ,"jo"],
+  "income" :[12,20,30,40],
+  "edu" :[1,2,3,4]
+ })
+df
+# %%
+df1 = df.set_index("ostan")
+df1
+# %%
+df1.loc["teh"]
+# %%
+df1.iloc["teh"]
+# %%
+df1.iloc[0]
+# %%
+df1.index.name = "pro"
+df1
+# %%
+df1[
+ (df1["pro"] == "teh")&
+ (df1["income"] ==10)
+]
+# %%
+df = pd.DataFrame({
+    "province": ["Tehran", "Tehran", "Isfahan", "Isfahan", "Mashhad"],
+    "income": [120, 95, 80, 85, 70],
+    "education_years": [16, 14, 12, 13, 11],
+    "gender": ["M", "F", "F", "M", "F"]
+})
+df
+
+# %%
+df.groupby("province") ["income"].mean()
+# %%
+df.groupby("province") ["income"].agg(["mean","count"])
+
+# %%
+df.groupby(["province", "gender"])["income"].mean().unstack()
+
+# %%
+g = df.groupby("province")["income"].mean().reset_index()
+g
+
+# %%
+df["income_centered"] = (
+    df["income"] -
+    df.groupby("province")["income"].transform("mean")
+)
+df
+
+# %%
+people = pd.DataFrame({
+    "person_id": [1, 2, 3, 4],
+    "province": ["Tehran", "Isfahan", "Tehran", "Mashhad"],
+    "education_years": [16, 12, 14, 11]
+})
+people
+
+# %%
+income = pd.DataFrame({
+    "person_id": [1, 2, 4],
+    "income": [120, 80, 70]
+})
+income
+
+# %%
+pd.merge(people,income, on = "person_id", how = "inner")
 # %%
