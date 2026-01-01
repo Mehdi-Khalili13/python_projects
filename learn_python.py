@@ -241,3 +241,121 @@ income
 # %%
 pd.merge(people,income, on = "person_id", how = "inner")
 # %%
+import pandas as pd
+# %%
+people_idx = people.set_index("person_id")
+income_idx = income.set_index("person_id")
+
+people_idx.join(income_idx)
+
+# %%
+import numpy as np
+df = pd.DataFrame({
+    "province": ["Tehran", "Isfahan", "Tehran", "Mashhad"],
+    "income": [120, np.nan, 95, np.nan],
+    "education_years": [16, 12, np.nan, 11]
+})
+df
+
+
+# %%
+df.isna()
+
+
+# %%
+df.isnull()
+
+# %%
+df.isna().sum()
+
+# %%
+df.isna().any()
+
+# %%
+df.dropna()
+
+# %%
+df["income"].fillna(0)
+
+# %%
+df.dropna(how="all")
+
+df.dropna(subset=["income"])
+
+
+# %%
+df.isna()
+# %%
+df.fillna(0)
+# %%
+import numpy as np
+
+# %%
+import pandas as pd
+# %%
+df.isna()
+# %%
+df.fillna(0)
+# %%
+df.dropna()
+# %%
+df.dropna(how='all')
+# %%
+df.dropna(subset = ['income'])
+# %%
+df['income'].fillna(df['income'].mean())
+# %%
+df.isna().sum()
+
+# %%
+df = pd.DataFrame({
+    "province": ["Tehran", "Tehran", "Isfahan", "Isfahan", "Mashhad"],
+    "gender": ["M", "F", "M", "F", "F"],
+    "income": [120, 95, 80, 85, 70]
+})
+df
+
+# %%
+pd.pivot_table(df, values= 'income', index = 'province', columns = 'gender', aggfunc = "mean")
+# %%
+df.pivot(
+    index="province",
+    columns="gender",
+    values="income"
+)
+
+# %%
+g= df.groupby(['province' , 'gender'])['income'].mean()
+g
+# %%
+g.unstack()
+# %%
+g.unstack().stack()
+# %%
+wide = pd.DataFrame({
+    "province": ["Tehran", "Isfahan"],
+    "M": [120, 80],
+    "F": [95, 85]
+})
+wide
+
+# %%
+pd.melt(
+    wide,
+    id_vars="province",
+    value_vars=["M", "F"],
+    var_name="gender",
+    value_name="income"
+)
+
+# %%
+table = (
+    df
+    .groupby(["province", "gender"])["income"]
+    .mean()
+    .reset_index()
+    .pivot(index="province", columns="gender", values="income")
+)
+table
+
+# %%
